@@ -2,6 +2,8 @@ import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
+import books from "./books/reducer";
+
 const persistConfig = {
   key: "KEY-1",
   storage,
@@ -9,6 +11,8 @@ const persistConfig = {
   blackList: [],
 };
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  books,
+});
 
 export default persistReducer(persistConfig, rootReducer);
