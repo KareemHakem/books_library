@@ -1,0 +1,34 @@
+.box-book-detail-container {
+  background-color: #f3f2f1;
+  height: 400px;
+  width: 300px;
+  margin-left: 100px;
+  margin-bottom: 30px;
+}
+
+.box-book-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.image-book-cover {
+  height: 200px;
+  width: 150px;
+  margin-top: 10px !important;
+  box-shadow: rgba(17, 12, 46, 0.29) 0px 48px 100px 0px;
+}
+
+.card-book-detail-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.Categories-name-book {
+  margin-top: 20px;
+}
