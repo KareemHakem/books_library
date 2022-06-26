@@ -22,7 +22,12 @@ export default function CardBook({ items, handleNavigation }) {
               <p className="Categories-name-book">
                 {item.volumeInfo?.categories}
               </p>
-              <h3> {item.volumeInfo?.title}</h3>
+
+              <h3>
+                {item.volumeInfo?.title.length > 20
+                  ? item.volumeInfo?.title.substring(0, 20 - 3) + "..."
+                  : item.volumeInfo?.title}
+              </h3>
               <p> {item.volumeInfo?.publisher}</p>
             </div>
           </div>

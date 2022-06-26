@@ -2,13 +2,14 @@ import { type } from "./type";
 import { axios } from "../../apis/axios";
 
 export const getBooks =
-  (pageNumber = "", keyword = "") =>
+  (pageNumber = 0, keyword = "flowers", filter = "full", orderBy = "newest") =>
   async (dispatch) => {
     dispatch({ type: type.GET_BOOKS_REQUEST });
     try {
       const { data } = await axios.get(
-        `?q=${keyword}=flowers+inauthor:keyes&key=AIzaSyB7A0ZR20nfj9p0scrTvL99PRFbPUpxWBM&startindex=${pageNumber}&maxResults=40&filter=free-ebooks&orderBy=relevance`
+        `?q=${keyword}+terms&key=AIzaSyB7A0ZR20nfj9p0scrTvL99PRFbPUpxWBM&startindex=${pageNumber}&maxResults=40&filter=${filter}&orderBy=${orderBy}`
       );
+      console.log(data);
       dispatch({ type: type.GET_BOOKS_SUCCESS, payload: data });
     } catch (err) {
       dispatch({ type: type.GET_BOOKS_ERROR, payload: err });

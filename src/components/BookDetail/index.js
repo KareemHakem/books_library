@@ -8,7 +8,11 @@ export default function BookDetail({ volumeInfo }) {
       <div className="img-card-book">
         <img
           className="image_cover_book"
-          src={volumeInfo.imageLinks?.large}
+          src={
+            volumeInfo.imageLinks?.large ||
+            volumeInfo.imageLinks?.thumbnail ||
+            volumeInfo.imageLinks?.smallThumbnail
+          }
           alt="image_cover_book"
         />
       </div>
