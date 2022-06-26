@@ -7,7 +7,7 @@ import books from "./books/reducer";
 const persistConfig = {
   key: "KEY-1",
   storage,
-  whiteList: [],
+  whiteList: ["books"],
   blackList: [],
 };
 

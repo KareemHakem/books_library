@@ -34,7 +34,7 @@
 }
 
 .box-description-book {
-  height: 180px;
+  height: 100px;
   width: 500px;
   border: 1px solid rgba(0, 0, 0, 0.23);
   display: flex;

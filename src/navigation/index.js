@@ -9,6 +9,7 @@ export default function Navigation() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomeBooks />} />
+        <Route path="/books-pg/:pageNumber" />
         <Route path="book/:id" element={<Book />} />
       </Routes>
     </>

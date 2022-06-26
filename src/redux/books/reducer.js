@@ -1,7 +1,7 @@
 import { type } from "./type";
 
 const initialState = {
-  items: {},
+  data: {},
   loading: false,
   error: null,
 };
@@ -16,14 +16,14 @@ const booksApiReducer = (state = initialState, action) => {
 
     case type.GET_BOOKS_SUCCESS:
       return {
-        items: action.payload,
+        data: action.payload,
         loading: false,
         error: null,
       };
 
     case type.GET_BOOKS_ERROR:
       return {
-        items: {},
+        data: {},
         loading: false,
         error: action.payload,
       };

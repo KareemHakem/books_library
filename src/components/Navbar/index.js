@@ -9,10 +9,12 @@ export default function Navbar({ sortingBy, Categories, ...props }) {
       <img src={image} alt="image_book" className="navbar-image" />
       <div className="search-book-navbar">
         <h1 className="search-book-p"> Search for books </h1>
-        <div className="search-bar-components">
-          <input className="form-input" placeholder="search for book" />
-
-          <SearchIcon style={{ color: "#000", zIndex: 100 }} />
+        <div className="form_search_container">
+          <div className="search-bar-components">
+            <input className="form-input" placeholder="search for book" />
+            <SearchIcon style={{ color: "#000", zIndex: 100 }} />
+          </div>
+          <button className="btn_search_navbar">Search</button>
         </div>
 
         <div className="form-select-input-container">

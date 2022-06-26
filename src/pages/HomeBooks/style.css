@@ -5,5 +5,39 @@
   flex-wrap: wrap;
   margin-top: 70px;
   width: 90%;
-  margin-left: 2.5px;
+  margin-left: 2.5%;
+}
+
+.paginateNumberPage {
+  margin: 15px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #2168a6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.paginateNextAndPreviousPage {
+  margin: 15px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  width: 40px;
+  height: 25px;
+  border-radius: 20%;
+  background-color: #2168a6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.paginatePage {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }

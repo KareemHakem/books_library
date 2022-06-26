@@ -1,20 +1,25 @@
 import React from "react";
-import image from "../../assets/book1.jpg";
+
 import "./style.css";
-export default function BookDetail() {
+
+export default function BookDetail({ volumeInfo }) {
   return (
     <div className="card-detail-book-container">
       <div className="img-card-book">
-        <img className="image_cover_book" src={image} alt="image_cover_book" />
+        <img
+          className="image_cover_book"
+          src={volumeInfo.imageLinks?.large}
+          alt="image_cover_book"
+        />
       </div>
       <div className="box-detail-book-container">
-        <p>Art/general</p>
-        <h1>While loading books, it is worth showing some kind of indicator</h1>
-        <p>kareem mohamed</p>
+        <p>
+          {volumeInfo.printType}/{volumeInfo.language}
+        </p>
+        <h1>{volumeInfo?.title}</h1>
+        <p>{volumeInfo?.publisher}</p>
         <div className="box-description-book">
-          <h3>
-            While loading books, it is worth showing some kind of indicator
-          </h3>
+          <h3>{volumeInfo?.title}</h3>
         </div>
       </div>
     </div>
