@@ -1,38 +1,35 @@
 import React from "react";
-
 import "./style.css";
 
 export default function CardBook({ items, handleNavigation }) {
   return (
     <>
-      {items.map((item) => (
-        <div
-          key={item.id}
-          onClick={() => handleNavigation(item.id)}
-          className="box-book-detail-container"
-        >
-          <div className="box-book-detail">
-            <img
-              className="image-book-cover"
-              src={item.volumeInfo.imageLinks?.thumbnail}
-              alt="image_book_cover"
-            />
+      <div
+        key={items.id}
+        onClick={() => handleNavigation(items.id)}
+        className="box-book-detail-container"
+      >
+        <div className="box-book-detail">
+          <img
+            className="image-book-cover"
+            src={items.volumeInfo.imageLinks?.thumbnail}
+            alt="image_book_cover"
+          />
 
-            <div className="card-book-detail-container">
-              <p className="Categories-name-book">
-                {item.volumeInfo?.categories}
-              </p>
+          <div className="card-book-detail-container">
+            <p className="Categories-name-book">
+              {items.volumeInfo?.categories}
+            </p>
 
-              <h3>
-                {item.volumeInfo?.title.length > 20
-                  ? item.volumeInfo?.title.substring(0, 20 - 3) + "..."
-                  : item.volumeInfo?.title}
-              </h3>
-              <p> {item.volumeInfo?.publisher}</p>
-            </div>
+            <h3>
+              {items.volumeInfo?.title.length > 20
+                ? items.volumeInfo?.title.substring(0, 20 - 3) + "..."
+                : items.volumeInfo?.title}
+            </h3>
+            <p className="book_publisher"> {items.volumeInfo?.publisher}</p>
           </div>
         </div>
-      ))}
+      </div>
     </>
   );
 }

@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import ReactPaginate from "react-paginate";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getBooks } from "../../redux/books/action";
@@ -12,8 +14,11 @@ import "./style.css";
 
 export default function HomeBooks({ search, filter, orderBy }) {
   const { data, loading, error } = useSelector((state) => state.books);
+  const [pageNumber, setPageNumber] = useState(0);
 
   const items = data?.items;
+  const per_page = 10;
+
   const dispatch = useDispatch();
   const navigation = useNavigate();
 
@@ -22,15 +27,47 @@ export default function HomeBooks({ search, filter, orderBy }) {
   };
 
   useEffect(() => {
-    dispatch(getBooks(0, search.trim().toLocaleLowerCase(), filter, orderBy));
-    console.log(search);
-  }, [dispatch, search, filter, orderBy]);
+    dispatch(
+      getBooks(pageNumber, search?.trim().toLocaleLowerCase(), filter, orderBy)
+    );
+  }, [dispatch, search, filter, orderBy, pageNumber]);
+
+  const handlePageClick = ({ selected: selectedPage }) => {
+    console.log("selectedPage", selectedPage);
+    setPageNumber(selectedPage);
+  };
+
+  const offset = pageNumber * per_page;
+
+  const currentPageData = items
+    .slice(offset, offset + per_page)
+    .map((item) => (
+      <CardBook
+        items={item}
+        key={item.id}
+        handleNavigation={handleNavigation}
+      />
+    ));
+
+  const pageCount = Math.ceil(items.length / per_page);
 
   if (loading) return <Loading />;
   if (error) return <Error />;
+
   return (
-    <div className="home-books-container">
-      <CardBook items={items} handleNavigation={handleNavigation} />
+    <div className="home-books">
+      <div className="home-books-container">{currentPageData}</div>
+      <ReactPaginate
+        previousLabel={"<-"}
+        nextLabel={"->"}
+        pageCount={pageCount}
+        onPageChange={handlePageClick}
+        containerClassName={"paginatePage"}
+        previousLinkClassName={"pagination__link"}
+        nextLinkClassName={"pagination__link"}
+        disabledClassName={"pagination__link--disabled"}
+        activeClassName={"pagination__link--active"}
+      />
     </div>
   );
 }

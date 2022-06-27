@@ -23,7 +23,11 @@ export default function BookDetail({ volumeInfo }) {
         <h1>{volumeInfo?.title}</h1>
         <p>{volumeInfo?.publisher}</p>
         <div className="box-description-book">
-          <h3>{volumeInfo?.title}</h3>
+          <h3>
+            {volumeInfo.description?.length > 190
+              ? volumeInfo.description?.substring(0, 190 - 3) + "..."
+              : volumeInfo.description}
+          </h3>
         </div>
       </div>
     </div>

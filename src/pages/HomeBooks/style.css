@@ -1,11 +1,18 @@
+.home-books {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  margin-left: 2.5%;
+}
+
 .home-books-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   margin-top: 70px;
-  width: 90%;
-  margin-left: 2.5%;
 }
 
 .paginateNumberPage {
@@ -39,5 +46,26 @@
 .paginatePage {
   display: flex !important;
   justify-content: center !important;
-  align-items: center !important;
+  list-style: none;
+  cursor: pointer;
+}
+
+.paginatePage a {
+  padding: 10px;
+  border: 1px solid #2168a6;
+  color: #2168a6;
+}
+
+.pagination__link {
+  font-weight: bold;
+}
+
+.pagination__link--active a {
+  color: #2168a6;
+  background-color: #0b2c4a;
+}
+
+.pagination__link--disabled a {
+  color: rgb(rgb(55, 139, 188), green, blue);
+  border: 1px solid rgb(rgb(55, 139, 188), green, blue);
 }

@@ -6,9 +6,10 @@ import Book from "../pages/Book";
 import Navbar from "../components/Navbar";
 
 export default function Navigation() {
-  const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState("");
-  const [orderBy, setOrderBy] = useState("");
+  const [search, setSearch] = useState();
+  const [filter, setFilter] = useState();
+  const [orderBy, setOrderBy] = useState();
+  
 
   return (
     <>

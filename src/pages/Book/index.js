@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 
-
 import BookDetail from "../../components/BookDetail";
-
 import { getBook } from "../../apis/requests/book";
+import Error from "../../commons/Error";
+import Loading from "../../commons/Loading";
 
 export default function Book() {
   const [volumeInfo, setVolumeInfo] = useState({});
@@ -24,8 +24,8 @@ export default function Book() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return "Loading.....";
-  if (error) return "error..";
+  if (loading) return <Loading />;
+  if (error) return <Error />;
   return (
     <>
       <BookDetail volumeInfo={volumeInfo} />
