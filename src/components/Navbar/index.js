@@ -9,7 +9,6 @@ export default function Navbar({
   setSearch,
   setFilter,
   setOrderBy,
-  ...props
 }) {
   const Categories = [
     "partial",
