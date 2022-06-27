@@ -4,7 +4,7 @@ import { axios } from "../../apis/axios";
 export const getBooks =
   (
     startIndex = 0,
-    keyword = "flowers",
+    keyword = "js",
     filter = "full",
     orderBy = "newest",
     dataResults = 40
