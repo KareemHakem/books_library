@@ -20,6 +20,8 @@ export default function HomeBooks({ search, filter, orderBy }) {
   const items = data?.items;
   const per_page = 10;
 
+  console.log(data, items);
+
   const dispatch = useDispatch();
   const navigation = useNavigate();
 
@@ -34,23 +36,22 @@ export default function HomeBooks({ search, filter, orderBy }) {
   }, [dispatch, search, filter, orderBy, pageNumber]);
 
   const handlePageClick = ({ selected: selectedPage }) => {
-    console.log("selectedPage", selectedPage);
     setPageNumber(selectedPage);
   };
 
   const offset = pageNumber * per_page;
 
   const currentPageData = items
-    .slice(offset, offset + per_page)
-    .map((item) => (
+    ?.slice(offset, offset + per_page)
+    ?.map((item) => (
       <CardBook
         items={item}
-        key={item.id}
+        key={item?.id}
         handleNavigation={handleNavigation}
       />
     ));
 
-  const pageCount = Math.ceil(items.length / per_page);
+  const pageCount = Math.ceil(items?.length / per_page);
 
   if (loading) return <Loading />;
   if (error) return <Error />;
