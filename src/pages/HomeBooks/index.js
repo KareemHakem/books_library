@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -31,9 +31,14 @@ export default function HomeBooks({ search, filter, orderBy }) {
 
   useEffect(() => {
     dispatch(
-      getBooks(pageNumber, search?.trim().toLocaleLowerCase(), filter, orderBy)
+      getBooks(
+        pageNumber,
+        search?.length > 1 ? search?.trim().toLocaleLowerCase() : "react",
+        filter,
+        orderBy
+      )
     );
-  }, [dispatch, search, filter, orderBy, pageNumber]);
+  }, [dispatch, search, filter, orderBy, pageNumber, search?.length]);
 
   const handlePageClick = ({ selected: selectedPage }) => {
     setPageNumber(selectedPage);
@@ -41,15 +46,21 @@ export default function HomeBooks({ search, filter, orderBy }) {
 
   const offset = pageNumber * per_page;
 
-  const currentPageData = items
-    ?.slice(offset, offset + per_page)
-    ?.map((item) => (
-      <CardBook
-        items={item}
-        key={item?.id}
-        handleNavigation={handleNavigation}
-      />
-    ));
+  const CardBooksView = () => {
+    return useMemo(
+      () =>
+        items
+          ?.slice(offset, offset + per_page)
+          ?.map((item) => (
+            <CardBook
+              items={item}
+              key={item?.id}
+              handleNavigation={handleNavigation}
+            />
+          )),
+      [search, filter, orderBy, pageNumber, offset, per_page] // other deps
+    );
+  };
 
   const pageCount = Math.ceil(items?.length / per_page);
 
@@ -58,7 +69,9 @@ export default function HomeBooks({ search, filter, orderBy }) {
 
   return (
     <div className="home-books">
-      <div className="home-books-container">{currentPageData}</div>
+      <div className="home-books-container">
+        <CardBooksView />
+      </div>
       <ReactPaginate
         previousLabel={"<-"}
         nextLabel={"->"}

@@ -2,17 +2,23 @@ import { type } from "./type";
 import { axios } from "../../apis/axios";
 
 export const getBooks =
-  (startIndex = 0, keyword = "react", filter = "full", orderBy = "newest") =>
+  (startIndex = 0, keyword, filter = "full", orderBy = "newest") =>
   async (dispatch) => {
     dispatch({ type: type.GET_BOOKS_REQUEST });
+    console.log("67813657169238176239817623987");
     try {
-      const { data } = await axios.get(
-        `?q=${keyword}+terms&key=AIzaSyB7A0ZR20nfj9p0scrTvL99PRFbPUpxWBM&maxResults=40`,
-        { params: { startindex: `${startIndex}` } },
-        { params: { filter: `${filter}` } },
-        { params: { orderBy: `${orderBy}` } }
-      );
-      console.log(data);
+      console.log(keyword, "keyword");
+      const { data } = await axios.get("", {
+        params: {
+          q: `${keyword}+terms`,
+          startindex: startIndex,
+          filter,
+          orderBy,
+          key: "AIzaSyB7A0ZR20nfj9p0scrTvL99PRFbPUpxWBM",
+          maxResults: 40,
+        },
+      });
+      console.log("khegfkwfkjhfkjhwkefjhwkjef");
       dispatch({ type: type.GET_BOOKS_SUCCESS, payload: data });
     } catch (err) {
       dispatch({ type: type.GET_BOOKS_ERROR, payload: err });
